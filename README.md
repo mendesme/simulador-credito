@@ -1,45 +1,78 @@
 <h1>Primeiro Desafio - Hackathon VITEC 2023</h1>
 
-<h3 align="center"><a>Acessar demonstração</h3>
+## Descrição
 
-# Indice
+**Primeiro Desafio de Desenvolvimento - Hackathon VITEC 2023** 
 
-- [Descrição](#descrição)
-- [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [Como Baixar o Projeto](#como-baixar-o-projeto)
+API responsável por simulação de empréstimo.
 
 ---
 
-## Descrição
+## Demonstração
 
-**Lorem ipsum** dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices risus ac vehicula accumsan. Phasellus tincidunt tincidunt dolor, porttitor fringilla nisi euismod ut. Sed nec vehicula quam.
+Demonstração em:
+
+https://simulador-credito.onrender.com/api/simulacao
+
+https://github.com/mendesme/simulador-credito
+
+---
+
+## Exemplo de Uso
+
+Chamada à API por método **POST** com o seguinte modelo de objeto JSON:
+
+```
+Exemplo:
+
+https://simulador-credito.onrender.com/api/simulacao
+```
+```json
+{
+    "valorDesejado": 900.00,
+    "prazo": 5
+}
+```
+**OU**
+
+Chamada à API por método **GET** com o seguinte modelo de query string:
+
+```
+https://simulador-credito.onrender.com/api/simulacao?valorDesejado=900&prazo=5
+```
 
 ---
 
 ## Tecnologias Utilizadas
 
-- [Vue](https://vuejs.org/)
+- NodeJS (v18)
 - Typescript
-- NodeJS
 
 ---
+## Instruções de Uso
 
-## Como Baixar o Projeto
-
+### Instalar Dependências
 ```bash
+npm install
+```
 
-    # Clonar o repositório
-    $ git clone (...)
+### Iniciar o Servidor em Ambiente de Desenvolvimento -
+```bash
+npm run dev
 
-    # Entrar no diretório
-    $ cd diretorio
+http://localhost:3000/api/simulacao
+```
 
-    $ npm install
+### Build para Produção
+```bash
+npm run build
+```
 
-    $ npm start
-
+### Iniciar o Servidor em Ambiente de Produção
+```bash
+npm run start
 ```
 
 ---
 
-Desenvolvido por Marcos Mendes
+Desenvolvido por Marcos Eliezer Alves de Carvalho Mendes
