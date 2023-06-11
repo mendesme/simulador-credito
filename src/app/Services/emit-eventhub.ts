@@ -1,6 +1,6 @@
 import { EventHubProducerClient, EventData } from '@azure/event-hubs';
 
-const emitEventHub = async (envelope: object) => {
+export const emitEventHub = async (envelope: object) => {
 
 	const connectionString = process.env.EVENTHUB_CONNECTION as string;
 	const eventHubName = process.env.EVENTHUB_HUBNAME as string;
@@ -21,10 +21,8 @@ const emitEventHub = async (envelope: object) => {
 		console.log('Dados enviados com sucesso para o event hub');
 
 	} catch (err) {
-
 		// eslint-disable-next-line no-console
-		console.log('Error occurred: ', err);
+		console.log('Erro ao enviar dados para o event hub: ', err);
 	}
 };
 
-export default emitEventHub;

@@ -22,10 +22,12 @@ class SimulacaoRequest {
 
 	public indexPost(request: Request, response: Response, next: NextFunction) {
 
-		const { body } = request;
+		const { valorDesejado, prazo } = request.body;
 
 		try {
-			SimulacaoSchema.parse(body);
+			SimulacaoSchema.parse({ valorDesejado, prazo });
+
+			response.locals.simulacao = { valorDesejado, prazo };
 
 			return next();
 
@@ -51,6 +53,8 @@ class SimulacaoRequest {
 
 		try {
 			SimulacaoSchema.parse({ valorDesejado, prazo });
+
+			response.locals.simulacao = { valorDesejado, prazo };
 
 			return next();
 

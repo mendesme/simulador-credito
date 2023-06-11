@@ -1,7 +1,7 @@
 import express, { Application } from 'express';
-import apiRouter from '../routes/api';
+import apiRouter from '@src/routes/api';
 import 'dotenv/config';
-import ConnectionFactory from '../database/connection/ConnectionFactory';
+import ConnectionFactory from '@src/infra/database/connection/ConnectionFactory';
 
 class App {
 
@@ -33,12 +33,12 @@ class App {
 
 	private async database() {
 
+		let pool = null;
 		const appPool = await ConnectionFactory.getConnection();
-		const pool = await appPool.connect();
+		if (appPool) pool = await appPool.connect();
 		this.express.locals.db = pool;
 	}
 }
 
 export default new App().express;
-
 

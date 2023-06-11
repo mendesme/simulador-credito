@@ -1,19 +1,25 @@
-import IProduto from './IProduto';
+export interface IProduto {
 
-class Produto implements IProduto {
+	coProduto: number;
+	noProduto: string;
+	pcTaxaJuros: number;
+	nuMinimoMeses: number;
+	nuMaximoMeses: number;
+	vrMinimo: number;
+	vrMaximo: number;
+}
+
+export class Produto implements IProduto {
 
 	public constructor(
 
-		public coProduto: number,
-		public noProduto: string,
-		public pcTaxaJuros: number,
-		public nuMinimoMeses: number,
-		public nuMaximoMeses: number,
-		public vrMinimo: number,
-		public vrMaximo: number
+		public readonly coProduto: number,
+		public readonly noProduto: string,
+		public readonly pcTaxaJuros: number,
+		public readonly nuMinimoMeses: number,
+		public readonly nuMaximoMeses: number,
+		public readonly vrMinimo: number,
+		public readonly vrMaximo: number
 
 	) { }
 }
-
-export default Produto;
-

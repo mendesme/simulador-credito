@@ -28,10 +28,15 @@ const ConnectionFactory = {
 
 			return connection;
 
-		} catch (err: any) {
-			// eslint-disable-next-line no-console
-			console.log(err);
-			throw new Error(err.message);
+		} catch (err: unknown) {
+
+			if (err instanceof sql.ConnectionError) {
+				// eslint-disable-next-line no-console
+				console.log(err.message);
+				return null;
+			}
+
+			throw err;
 		}
 	}
 };

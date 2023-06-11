@@ -1,14 +1,19 @@
+import app from '@src/config/app';
 import sql from 'mssql';
-import IProduto from '../../app/Models/IProduto';
-import Produto from '../../app/Models/Produto';
+import { IProduto, Produto } from '@src/app/Models/Produto';
 
 class ProdutoRepository {
 
-	private connection: sql.ConnectionPool;
+	private connection: sql.ConnectionPool | null;
 
-	public constructor(connection: sql.ConnectionPool) {
+	public constructor() {
 
-		this.connection = connection;
+		this.connection = null;
+	}
+
+	public openSession() {
+
+		this.connection = app.locals.db;
 	}
 
 	public async findOne(valorDesejado: number, prazo: number) {
@@ -27,12 +32,13 @@ class ProdutoRepository {
 				(VR_MINIMO <= @valorDesejado AND ISNULL(VR_MAXIMO, @valorDesejado) >= @valorDesejado);
 		`;
 
-		const queryResults = await this.connection.request()
+		const queryResults = await this.connection?.request()
 			.input('prazo', sql.Int, prazo)
 			.input('valorDesejado', sql.Money, valorDesejado)
 			.query(queryString);
 
-		const produto = (queryResults.recordset as sql.IRecordSet<IProduto>)[0];
+		let produto: IProduto | null = null;
+		if (queryResults) produto = (queryResults.recordset as sql.IRecordSet<IProduto>)[0];
 
 		return produto
 			? new Produto(
@@ -49,6 +55,5 @@ class ProdutoRepository {
 	}
 }
 
-export default ProdutoRepository;
-
+export default new ProdutoRepository();
 

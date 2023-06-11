@@ -1,8 +1,10 @@
 /node_modules
 /dist
-/tests
+/tests/api.http
+/coverage
 .env
-
+anotacoes.txt
+src/infra/cache/*
 
 
 
