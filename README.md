@@ -1,8 +1,6 @@
-<h1>Primeiro Desafio - Hackathon VITEC 2023</h1>
+<h1>Simulador de Crédito</h1>
 
 ## Descrição
-
-**Primeiro Desafio de Desenvolvimento - Hackathon VITEC 2023** 
 
 API responsável por simulação de empréstimo.
 
@@ -74,5 +72,3 @@ npm run start
 ```
 
 ---
-
-Desenvolvido por Marcos Eliezer Alves de Carvalho Mendes
